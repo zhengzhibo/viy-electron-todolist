@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <div id="nav" style="-webkit-app-region: drag">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <HeaderBar></HeaderBar>
     <router-view/>
   </div>
 </template>
 
+<script>
+import HeaderBar from './components/HeaderBar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HeaderBar,
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   height: 100%;
   background-color: rgba(255, 255, 255, .1);
   border-radius: 8px;
-  padding: 0 10px;
+  padding: 20px;
 }
 
 #nav {
