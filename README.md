@@ -1,4 +1,4 @@
-# viy-electron
+# viy-electron-todolist
 
 ## Project setup
 ```

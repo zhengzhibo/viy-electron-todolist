@@ -4,6 +4,8 @@ import Viy from 'viy-ui';
 import App from './App.vue';
 import router from './router';
 
+import './style/global.css';
+
 Vue.use(VueI18n);
 Vue.use(Viy);
 
