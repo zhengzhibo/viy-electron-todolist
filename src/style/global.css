@@ -1,5 +1,39 @@
+:root {
+  --windowOpacity: 1;
+  --backgroundColor: rgba(0, 0, 0, .8);
+  --fontColor: rgb(233, 233, 233);
+}
+
 html,body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   height: 100%;
   margin: 0;
   padding: 0;
+  opacity: var(--windowOpacity);
+}
+
+.vue-dropdown-menu {
+  background-color: var(--backgroundColor);
+  border-radius: 8px;
+  color: var(--fontColor);
+}
+
+.vue-dropdown-menu__item--divided:before {
+  background-color: var(--backgroundColor);
+}
+
+.vue-dropdown-menu__item:not(.is-disabled):hover {
+  color: var(--fontColor);
+  background-color: var(--backgroundColor);
+  filter: brightness(150%);
+}
+
+.vue-notification {
+  background-color: var(--backgroundColor);
+}
+.vue-notification__title {
+  color: var(--fontColor);
 }
