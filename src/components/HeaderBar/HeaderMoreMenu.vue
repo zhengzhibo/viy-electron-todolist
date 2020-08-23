@@ -5,15 +5,15 @@
       <i class="vue-icon-more"></i>
     </span>
     <vue-dropdown-menu slot="dropdown">
-      <vue-dropdown-item command="data">数据分析</vue-dropdown-item>
       <vue-dropdown-item command="setting">设置</vue-dropdown-item>
+      <vue-dropdown-item command="help">帮助</vue-dropdown-item>
       <vue-dropdown-item  command="exit" divided>退出</vue-dropdown-item>
     </vue-dropdown-menu>
   </vue-dropdown>
 </template>
 
 <script>
-const { remote } = require('electron');
+import { ipcRenderer } from 'electron';
 
 export default {
   name: 'HeaderMoreMenu',
@@ -21,7 +21,10 @@ export default {
     handleCommand(command) {
       switch (command) {
         case 'exit':
-          remote.getCurrentWindow().close();
+          ipcRenderer.sendSync('QuitApp');
+          break;
+        case 'help':
+          this.$router.push({ name: 'Help' });
           break;
         default:
           this.$notify({ title: '很抱歉，功能开发中……' });

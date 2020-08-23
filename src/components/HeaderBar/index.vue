@@ -1,17 +1,18 @@
 <template>
   <div class="header-container">
     <div class="menu-container">
-      <HeaderDropDown />
-      <HeaderMoreMenu />
+      <HeaderDropDown style="-webkit-app-region: no-drag;" />
+      <HeaderMoreMenu style="-webkit-app-region: no-drag;" />
     </div>
-    <vue-input class="add-input" placeholder="请输入任务" @keydown.native.enter="addTask"></vue-input>
+    <vue-input class="add-input" v-model="taskInput" placeholder="请输入任务"
+      @keydown.native.enter="handleEnterKey"></vue-input>
   </div>
 </template>
 
 <script>
 import HeaderDropDown from './HeaderDropDown';
 import HeaderMoreMenu from './HeaderMoreMenu';
-import TaskApi from '../../api/TaskApi';
+import { addTask } from '../../api/TaskApi';
 
 export default {
   name: 'HeaderBar',
@@ -19,9 +20,24 @@ export default {
     HeaderDropDown,
     HeaderMoreMenu,
   },
+  data() {
+    return {
+      taskInput: '',
+    };
+  },
   methods: {
-    addTask() {
-      console.log(TaskApi.taskAdd());
+    async handleEnterKey(event) {
+      if (!this.taskInput) return;
+
+      console.log(event);
+
+      const task = await addTask({
+        title: this.taskInput,
+        createOn: new Date(),
+      });
+
+      this.taskInput = '';
+      this.$emit('addTask', task);
     },
   },
 };
@@ -45,6 +61,7 @@ export default {
 }
 
 .add-input .vue-input__inner::placeholder{
-  color: var(--fontColor)
+  color: var(--fontColor);
+  filter: brightness(60%);
 }
 </style>

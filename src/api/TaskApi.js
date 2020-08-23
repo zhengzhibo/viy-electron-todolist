@@ -1,9 +1,20 @@
-import { ipcRenderer } from 'electron';
+import { tasks } from '../db';
 
-function taskAdd() {
-  return ipcRenderer.sendSync('taskAdd', { a: 1 });
+function getTasks() {
+  return tasks.find();
 }
 
+function addTask(task) {
+  return tasks.insert(task);
+}
+
+function updateTask(id, task) {
+  return tasks.update({ _id: id }, task);
+}
+
+export { getTasks, addTask, updateTask };
 export default {
-  taskAdd,
+  getTasks,
+  addTask,
+  updateTask,
 };

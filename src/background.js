@@ -1,5 +1,8 @@
-import { app, protocol, BrowserWindow } from 'electron';
+import {
+  app, protocol, BrowserWindow, Menu, Tray,
+} from 'electron';
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib';
+import path from 'path';
 import './events';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -38,7 +41,16 @@ function createWindow() {
   }
 
   win.on('closed', () => {
-    win = null;
+    if (!app.isQuiting) {
+      win.hide();
+    } else {
+      win = null;
+    }
+  });
+
+  win.on('minimize', (event) => {
+    event.preventDefault();
+    win.hide();
   });
 }
 
@@ -57,6 +69,17 @@ app.on('activate', () => {
   if (win === null) {
     createWindow();
   }
+});
+
+let tray = null;
+app.whenReady().then(() => {
+  tray = new Tray(path.join(__static, 'app.ico'));
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '显示', click() { win.show(); } },
+    { label: '退出', click() { app.isQuiting = true; app.quit(); } },
+  ]);
+  tray.setToolTip('This is my application.');
+  tray.setContextMenu(contextMenu);
 });
 
 // This method will be called when Electron has finished

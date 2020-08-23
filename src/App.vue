@@ -15,6 +15,7 @@ export default {
   background-color: var(--backgroundColor);
   border-radius: 8px;
   padding: 12px;
+  overflow: hidden;
 }
 
 </style>

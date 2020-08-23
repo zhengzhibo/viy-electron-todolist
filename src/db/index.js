@@ -1,7 +1,15 @@
 import path from 'path';
-import { app } from 'electron';
-import Datastore from 'nedb';
+import { ipcRenderer } from 'electron';
 
-console.log(app.getPath('userData'));
-const db = new Datastore({ filename: path.join(app.getPath('userData'), 'db/task.db'), autoload: true });
-export default db;
+const Datastore = require('nedb-promises');
+
+const { userData } = ipcRenderer.sendSync('GetSystemInfo');
+const tasks = Datastore.create(path.join(userData, 'db/tasks.db'));
+const setting = Datastore.create(path.join(userData, 'db/setting.db'));
+
+export { tasks, setting };
+
+export default {
+  tasks,
+  setting,
+};

@@ -18,6 +18,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/extensions': 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'no-underscore-dangle': 'off',
   },
 };
