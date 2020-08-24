@@ -25,9 +25,11 @@ function createWindow() {
     frame: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
+      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration
+      // for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
     },
+    icon: path.join(__static, 'app.png'),
   });
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -72,15 +74,6 @@ app.on('activate', () => {
 });
 
 let tray = null;
-app.whenReady().then(() => {
-  tray = new Tray(path.join(__static, 'app.ico'));
-  const contextMenu = Menu.buildFromTemplate([
-    { label: '显示', click() { win.show(); } },
-    { label: '退出', click() { app.isQuiting = true; app.quit(); } },
-  ]);
-  tray.setToolTip('This is my application.');
-  tray.setContextMenu(contextMenu);
-});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -95,6 +88,20 @@ app.on('ready', async () => {
     }
   }
   createWindow();
+
+  tray = new Tray(path.join(__static, 'app.png'));
+  const contextMenu = Menu.buildFromTemplate([
+    { label: '显示', click() { win.show(); } },
+    {
+      label: '退出',
+      click() {
+        app.isQuiting = true;
+        app.quit();
+      },
+    },
+  ]);
+  tray.setToolTip('This is my application.');
+  tray.setContextMenu(contextMenu);
 });
 
 // Exit cleanly on request from parent process in development mode.

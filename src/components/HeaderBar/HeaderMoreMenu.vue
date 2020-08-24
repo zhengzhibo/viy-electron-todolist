@@ -26,6 +26,9 @@ export default {
         case 'help':
           this.$router.push({ name: 'Help' });
           break;
+        case 'setting':
+          this.$router.push({ name: 'Setting' });
+          break;
         default:
           this.$notify({ title: '很抱歉，功能开发中……' });
           break;

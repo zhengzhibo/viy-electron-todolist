@@ -10,8 +10,9 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  "globals": {
-      "VueUtil": true
+  'globals': {
+      'VueUtil': true,
+      '__static': true,
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

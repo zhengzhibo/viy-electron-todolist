@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home';
 import Help from '../views/Help';
+import Setting from '../views/Setting';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/help',
     name: 'Help',
     component: Help,
+  },
+  {
+    path: '/setting',
+    name: 'Setting',
+    component: Setting,
   },
 ];
 
