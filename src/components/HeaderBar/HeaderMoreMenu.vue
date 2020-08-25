@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { ipcRenderer } from 'electron';
 
 export default {
   name: 'HeaderMoreMenu',
@@ -21,7 +20,7 @@ export default {
     handleCommand(command) {
       switch (command) {
         case 'exit':
-          ipcRenderer.sendSync('QuitApp');
+          // ipcRenderer.sendSync('QuitApp');
           break;
         case 'help':
           this.$router.push({ name: 'Help' });

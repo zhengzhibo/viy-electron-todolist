@@ -1,13 +1,10 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import Viy from 'viy-ui';
-import { ipcRenderer } from 'electron';
 import App from './App.vue';
 import router from './router';
 
 import './style/global.css';
-
-window.ipcRenderer = ipcRenderer;
 
 Vue.use(VueI18n);
 Vue.use(Viy);
