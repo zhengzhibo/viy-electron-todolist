@@ -54,9 +54,15 @@ export default {
   background-color: rgba(255, 255, 255, .1)
 }
 
+.task-check {
+  max-width: calc(100% - 18px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: var(--fontColor);
+}
+
 .task-check >>> .vue-checkbox__label {
   color: var(--fontColor);
-  display: inline-block;
   vertical-align: text-bottom;
 }
 
