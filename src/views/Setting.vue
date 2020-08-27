@@ -4,20 +4,14 @@
     <div class="content">
       <input type="color" v-model="backgroundColor">
       <input type="range" v-model="alpha" min="0" max="100">
-
       <br>
-      {{backgroundColor}}
-      {{alpha}}
-
-      {{backgroundColorRgba}}
     </div>
   </div>
 </template>
 
 <script>
-import hexRgb from 'hex-rgb';
-import rgbHex from 'rgb-hex';
 import NavBar from '../components/NavBar';
+import { setSetting } from '../api/SettingApi';
 
 const styles = getComputedStyle(document.body);
 
@@ -33,18 +27,21 @@ export default {
     };
   },
   computed: {
-    backgroundColorRgba() {
+    backgroundColorWithAlpha() {
       if (!this.backgroundColor) return '';
-      const rbga = hexRgb(this.backgroundColor);
-      rbga.alpha = this.alpha / 100;
+      let alpha = parseInt(((this.alpha / 100) * 255), 10).toString(16);
 
-      return `rgba(${rbga.red}, ${rbga.green}, ${rbga.blue},  ${rbga.alpha})`;
+      if (alpha.length === 1) {
+        alpha = 0 + alpha;
+      }
+
+      return this.backgroundColor + alpha;
     },
   },
   watch: {
-    backgroundColorRgba(val) {
+    backgroundColorWithAlpha(val) {
       this.setCssVar('backgroundColor', val);
-      // console.log(val);
+      setSetting('backgroundColor', val);
     },
   },
   methods: {
@@ -52,16 +49,14 @@ export default {
       return styles.getPropertyValue(`--${varName}`);
     },
     setCssVar(varName, value) {
-      console.log(value);
-      styles.setProperty(`--${varName}`, value);
+      document.documentElement.style.setProperty(`--${varName}`, value);
     },
   },
-  created() {
-    const currentRgba = this.getCssVar('backgroundColor');
-    const currentHex = rgbHex(currentRgba);
+  async created() {
+    const backgroundColor = this.getCssVar('backgroundColor').trim();
 
-    this.backgroundColor = `#${currentHex.substring(0, 6)}`;
-    this.alpha = (Number.parseInt(currentHex.substring(6, 8), 16) / 255) * 100;
+    this.backgroundColor = `${backgroundColor.substring(0, 7)}`;
+    this.alpha = (Number.parseInt(backgroundColor.substring(7, 9), 16) / 255) * 100;
   },
 };
 </script>

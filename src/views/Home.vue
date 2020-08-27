@@ -6,6 +6,7 @@
     <Task v-for="task in unfinishedTask" :key="task._id" :task="task"/>
     <div><span class="tips">已完成</span></div>
     <Task v-for="task in finishedTask" :key="task._id" :task="task"/>
+
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import { firstBy } from 'thenby';
 import HeaderBar from '../components/HeaderBar';
 import Task from '../components/Task';
+
 import { getTasks } from '../api/TaskApi';
 
 export default {
