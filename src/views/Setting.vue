@@ -2,8 +2,10 @@
   <div calss="view-container">
     <NavBar title="设置"></NavBar>
     <div class="content">
-      <input type="color" v-model="backgroundColor">
-      <input type="range" v-model="alpha" min="0" max="100">
+      <LayoutSection label="样式设置">
+        <input class="edit-background-color" type="color" v-model="backgroundColor">
+        <input class="edit-background-alpha" type="range" v-model="alpha" min="0" max="100">
+      </LayoutSection>
       <br>
     </div>
   </div>
@@ -65,6 +67,18 @@ export default {
 
 .content {
   color: var(--fontColor);
+}
+
+.edit-background-color {
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  outline: 0;
+}
+
+.edit-background-color::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
 
 </style>
