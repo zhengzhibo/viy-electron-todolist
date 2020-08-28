@@ -22,12 +22,12 @@ export default {
 .date-class-label {
   cursor: pointer;
   font-size: 25px;
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
 .vue-icon--right {
   cursor: pointer;
-  color: var(--fontColor);
+  color: var(--font-color);
   vertical-align: unset;
 }
 </style>

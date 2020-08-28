@@ -56,12 +56,12 @@ export default {
 }
 
 .add-input .vue-input__inner{
-  background-color: var(--backgroundColor);
-  color: var(--fontColor)
+  background-color: var(--background-color);
+  color: var(--font-color)
 }
 
 .add-input .vue-input__inner::placeholder{
-  color: var(--fontColor);
+  color: var(--font-color);
   filter: brightness(60%);
 }
 </style>

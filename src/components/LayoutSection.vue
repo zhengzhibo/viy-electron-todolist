@@ -21,7 +21,7 @@ fieldset legend {
   display: inline-block;
   align-items: center;
   justify-content: center;
-  color: var(--fg-color);
+  color: var(--font-color);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

@@ -25,7 +25,7 @@ export default {
 <style scoped>
 
 .content {
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
 .content h1 {

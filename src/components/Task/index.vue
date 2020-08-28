@@ -65,17 +65,17 @@ export default {
 .task-check {
   text-overflow: ellipsis;
   overflow: hidden;
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
 .task-check >>> .vue-checkbox__label {
-  color: var(--fontColor);
+  color: var(--font-color);
   vertical-align: text-bottom;
 }
 
 .more-icon {
   cursor: pointer;
-  color: var(--fontColor);
+  color: var(--font-color);
   line-height: 22px;
   visibility: hidden;
 }

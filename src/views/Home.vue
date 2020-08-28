@@ -63,7 +63,7 @@ export default {
 
 .tips {
   font-size: 14px;
-  color: var(--fontColor);
+  color: var(--font-color);
   filter: brightness(60%);
 }
 

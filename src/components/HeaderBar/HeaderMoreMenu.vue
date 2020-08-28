@@ -42,12 +42,12 @@ export default {
   cursor: pointer;
   font-size: 18px;
   line-height: 36px;
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
 .vue-icon--right {
   cursor: pointer;
-  color: var(--fontColor);
+  color: var(--font-color);
   vertical-align: unset;
 }
 </style>

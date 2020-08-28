@@ -25,7 +25,7 @@ export default {
 .navbar-container {
   line-height: 16px;
   -webkit-app-region: drag;
-  color: var(--fontColor);
+  color: var(--font-color);
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
