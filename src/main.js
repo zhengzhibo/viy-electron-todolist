@@ -8,6 +8,11 @@ import './style/global.css';
 
 import { getSetting } from './api/SettingApi';
 
+import LayoutSection from './components/LayoutSection.vue';
+
+console.log(LayoutSection.name);
+Vue.component(LayoutSection.name, LayoutSection);
+
 async function initSetting() {
   const backgroundColor = await getSetting('backgroundColor');
   if (backgroundColor) {

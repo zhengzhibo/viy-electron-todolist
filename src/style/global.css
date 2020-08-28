@@ -14,7 +14,9 @@ html,body {
   padding: 0;
   opacity: var(--windowOpacity);
 }
-
+.hidden {
+  display: none;
+}
 .vue-dropdown-menu {
   background-color: var(--backgroundColor);
   border-radius: 8px;
