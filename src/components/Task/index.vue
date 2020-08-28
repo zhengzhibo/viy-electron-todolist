@@ -46,6 +46,14 @@ export default {
   border: 2px solid red;
 }
 
+.task-container >>> .vue-checkbox__inner:active{
+  box-shadow: inset 0px 0px 4px 1px #888888;
+}
+
+.task-container >>> .vue-checkbox__inner:active:after {
+  display: none;
+}
+
 .task-container-finished {
   filter: brightness(60%);
 }
