@@ -1,11 +1,21 @@
 <template>
   <div calss="view-container">
-    <NavBar title="设置"></NavBar>
+    <NavBar title="设置" />
     <div class="content">
       <LayoutSection label="样式设置">
-        <input class="edit-background-color" type="color" v-model="backgroundColor">
-        <input class="edit-background-alpha" type="range" v-model="alpha" min="0" max="100">
+        <LayoutItem title="背景色">
+          <input class="edit-background-color" type="color" v-model="backgroundColor">
+        </LayoutItem>
+        <LayoutItem title="透明度">
+          <input class="edit-background-alpha" type="range" v-model="alpha" min="0" max="100">
+        </LayoutItem>
+        <LayoutItem title="字体色">
+          <input class="edit-font-color" type="color" v-model="fontColor">
+          {{fontColor}}
+        </LayoutItem>
       </LayoutSection>
+
+      <span>z-todo v1.0</span>
       <br>
     </div>
   </div>
@@ -14,6 +24,7 @@
 <script>
 import NavBar from '../components/NavBar';
 import { setSetting } from '../api/SettingApi';
+import LayoutItem from '../components/LayoutItem';
 
 const styles = getComputedStyle(document.body);
 
@@ -21,11 +32,13 @@ export default {
   name: 'HeSettinglp',
   components: {
     NavBar,
+    LayoutItem,
   },
   data() {
     return {
       backgroundColor: '',
       alpha: 0,
+      fontColor: '',
     };
   },
   computed: {
@@ -42,8 +55,12 @@ export default {
   },
   watch: {
     backgroundColorWithAlpha(val) {
-      this.setCssVar('backgroundColor', val);
+      this.setCssVar('background-color', val);
       setSetting('backgroundColor', val);
+    },
+    fontColor(val) {
+      this.setCssVar('font-color', val);
+      setSetting('fontColor', val);
     },
   },
   methods: {
@@ -55,10 +72,13 @@ export default {
     },
   },
   async created() {
-    const backgroundColor = this.getCssVar('backgroundColor').trim();
+    const backgroundColor = this.getCssVar('background-color').trim();
 
     this.backgroundColor = `${backgroundColor.substring(0, 7)}`;
     this.alpha = (Number.parseInt(backgroundColor.substring(7, 9), 16) / 255) * 100;
+
+    const fontColor = this.getCssVar('font-color').trim();
+    this.fontColor = fontColor;
   },
 };
 </script>
@@ -66,10 +86,10 @@ export default {
 <style scoped>
 
 .content {
-  color: var(--fontColor);
+  color: var(--font-color);
 }
 
-.edit-background-color {
+input[type="color"] {
   border: none;
   width: 32px;
   height: 32px;
@@ -77,7 +97,7 @@ export default {
   outline: 0;
 }
 
-.edit-background-color::-webkit-color-swatch-wrapper {
+input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
 

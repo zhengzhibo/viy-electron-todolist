@@ -15,8 +15,12 @@ Vue.component(LayoutSection.name, LayoutSection);
 
 async function initSetting() {
   const backgroundColor = await getSetting('backgroundColor');
+  const fontColor = await getSetting('fontColor');
   if (backgroundColor) {
-    document.documentElement.style.setProperty('--backgroundColor', backgroundColor);
+    document.documentElement.style.setProperty('--background-color', backgroundColor);
+  }
+  if (fontColor) {
+    document.documentElement.style.setProperty('--font-color', fontColor);
   }
 }
 
