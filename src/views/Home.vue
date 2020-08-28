@@ -1,11 +1,13 @@
 <template>
-  <div calss="view-container">
+  <div class="view-container">
     <HeaderBar @addTask="handleAddTask" date-class="dateClass" />
 
-    <div><span class="tips">未完成</span></div>
-    <Task v-for="task in unfinishedTask" :key="task._id" :task="task"/>
-    <div><span class="tips">已完成</span></div>
-    <Task v-for="task in finishedTask" :key="task._id" :task="task"/>
+    <div class="task-list">
+      <div><span class="tips">未完成</span></div>
+      <Task v-for="task in unfinishedTask" :key="task._id" :task="task"/>
+      <div><span class="tips">已完成</span></div>
+      <Task v-for="task in finishedTask" :key="task._id" :task="task"/>
+    </div>
 
   </div>
 </template>
@@ -63,5 +65,19 @@ export default {
   font-size: 14px;
   color: var(--fontColor);
   filter: brightness(60%);
+}
+
+.view-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 10px;
+  margin: 0 -10px;
 }
 </style>

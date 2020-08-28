@@ -55,7 +55,6 @@ export default {
 }
 
 .task-check {
-  max-width: calc(100% - 18px);
   text-overflow: ellipsis;
   overflow: hidden;
   color: var(--fontColor);

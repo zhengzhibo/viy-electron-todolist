@@ -14,7 +14,7 @@ export default {
   height: 100%;
   background-color: var(--backgroundColor);
   border-radius: 8px;
-  padding: 12px;
+  padding: 12px 12px 0 12px;
   overflow: hidden;
 }
 
