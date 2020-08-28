@@ -10,7 +10,9 @@ import { getSetting } from './api/SettingApi';
 
 async function initSetting() {
   const backgroundColor = await getSetting('backgroundColor');
-  document.documentElement.style.setProperty('--backgroundColor', backgroundColor);
+  if (backgroundColor) {
+    document.documentElement.style.setProperty('--backgroundColor', backgroundColor);
+  }
 }
 
 async function init() {
