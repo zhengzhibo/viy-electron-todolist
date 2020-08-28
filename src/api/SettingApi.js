@@ -11,7 +11,7 @@ async function setSetting(key, value) {
   if (exist) {
     return setting.update({ key }, { $set: { value } });
   }
-  return setting.insert({ key }, { key, value });
+  return setting.insert({ key, value });
 }
 
 export { getSetting, setSetting };
