@@ -12,9 +12,16 @@ function updateTask(id, task) {
   return tasks.update({ _id: id }, task);
 }
 
-export { getTasks, addTask, updateTask };
+function removeTask(id) {
+  return tasks.remove({ _id: id });
+}
+
+export {
+  getTasks, addTask, updateTask, removeTask,
+};
 export default {
   getTasks,
   addTask,
   updateTask,
+  removeTask,
 };

@@ -21,5 +21,6 @@ module.exports = {
     'import/extensions': 'off',
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
+    'max-len': ["error", { "code": 180 }]
   },
 };
